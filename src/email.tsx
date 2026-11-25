@@ -42,7 +42,7 @@ function Strip({ color, height = 4 }: { color: string; height?: number }) {
 
 function Fact({ label, value }: { label: string; value: string }) {
   return (
-    <Column style={{ gap: 3 }}>
+    <Column style={{ gap: 5 }}>
       <Text style={{ ...metaText, color: p.soft }}>{label}</Text>
       <Text style={{ fontFamily: fonts.body, fontWeight: 600, fontSize: 14.5, color: p.ink, lineHeight: 1.2 }}>
         {value}
@@ -69,7 +69,7 @@ function MoneyLine({
       columns={2}
       style={{
         gap: 12,
-        padding: [7, 0],
+        padding: [10, 0],
         border: first ? undefined : { top: { width: 1, style: "solid", color: p.hairline } },
       }}
     >
@@ -96,7 +96,7 @@ export default function OfferEmail({ ctc }: { ctc?: number }) {
       style={{ backgroundColor: p.paper, gap: 0 }}
     >
       {/* Masthead — the badge's colours, email-safe */}
-      <Section style={{ backgroundColor: p.carbon, padding: [24, 40, 20] }}>
+      <Section style={{ backgroundColor: p.carbon, padding: [32, 40, 28] }}>
         <Grid columns={2} style={{ gap: 12, alignItems: "center" }}>
           <Row style={{ gap: 10, alignItems: "center" }}>
             <Column style={{ width: 13, height: 10, backgroundColor: p.lime, flex: "none" }} />
@@ -111,19 +111,20 @@ export default function OfferEmail({ ctc }: { ctc?: number }) {
       </Section>
       <Strip color={p.lime} height={4} />
 
-      {/* Meta strip */}
-      <Section style={{ backgroundColor: p.paper, padding: [14, 40, 2] }}>
-        <Grid columns={2} style={{ gap: 10 }}>
+      {/* Meta strip — stacked, one line each: side by side the two
+          mono lines crowd and the date wraps mid-phrase. */}
+      <Section style={{ backgroundColor: p.paper, padding: [20, 40, 4] }}>
+        <Column style={{ gap: 7 }}>
           <Text style={{ ...metaText, color: p.soft }}>Offer of employment — {dateLabel(offer.offerDate)}</Text>
-          <Text style={{ ...metaText, color: p.soft, textAlign: "right" }}>
+          <Text style={{ ...metaText, color: p.soft }}>
             Status — <Span style={{ color: p.ink }}>Awaiting your signature</Span>
           </Text>
-        </Grid>
+        </Column>
       </Section>
 
       {/* Headline + intro */}
-      <Section style={{ backgroundColor: p.paper, padding: [20, 40, 4] }}>
-        <Column style={{ gap: 12 }}>
+      <Section style={{ backgroundColor: p.paper, padding: [26, 40, 6] }}>
+        <Column style={{ gap: 16 }}>
           <Heading level={1} style={{ fontSize: 34, lineHeight: 1.1, color: p.ink }}>
             Your offer, {candidate.firstName}.
           </Heading>
@@ -139,9 +140,9 @@ export default function OfferEmail({ ctc }: { ctc?: number }) {
       </Section>
 
       {/* Take-home hero — carbon panel, lime signal */}
-      <Section style={{ backgroundColor: p.paper, padding: [18, 40, 4] }}>
-        <Column style={{ backgroundColor: p.carbon, padding: [20, 24, 22] }}>
-          <Column style={{ gap: 4 }}>
+      <Section style={{ backgroundColor: p.paper, padding: [26, 40, 6] }}>
+        <Column style={{ backgroundColor: p.carbon, padding: [28, 30, 30] }}>
+          <Column style={{ gap: 8 }}>
             <Text style={{ ...metaText, color: p.lime }}>Take-home · every month, after tax</Text>
             <Text style={{ fontFamily: fonts.display, fontWeight: 700, fontSize: 40, lineHeight: 1.05, color: p.offWhite }}>
               {inr(payroll.inHandMonthly)} <Span style={{ fontSize: 17, fontWeight: 600, color: p.softDark }}>/ month</Span>
@@ -156,8 +157,8 @@ export default function OfferEmail({ ctc }: { ctc?: number }) {
       </Section>
 
       {/* Facts */}
-      <Section style={{ backgroundColor: p.paper, padding: [22, 40, 2] }}>
-        <Grid columns={2} style={{ gap: 16, rowGap: 15 }}>
+      <Section style={{ backgroundColor: p.paper, padding: [28, 40, 4] }}>
+        <Grid columns={2} style={{ gap: 20, rowGap: 22 }}>
           <Fact label="Role" value={`${candidate.role}`} />
           <Fact label="Team · level" value={`${candidate.team} · ${candidate.level}`} />
           <Fact label="Joining" value={dateBadge(joining.joining)} />
@@ -168,8 +169,8 @@ export default function OfferEmail({ ctc }: { ctc?: number }) {
       </Section>
 
       {/* The money, in short */}
-      <Section style={{ backgroundColor: p.paper, padding: [20, 40, 2] }}>
-        <Column style={{ gap: 4 }}>
+      <Section style={{ backgroundColor: p.paper, padding: [28, 40, 4] }}>
+        <Column style={{ gap: 9 }}>
           <Text style={{ ...metaText, fontSize: 10.5, letterSpacing: 2, color: p.soft }}>The money, in short — per year</Text>
           <Column>
             {payroll.rows
@@ -193,15 +194,15 @@ export default function OfferEmail({ ctc }: { ctc?: number }) {
       </Section>
 
       {/* Access strip echo */}
-      <Section style={{ backgroundColor: p.paper, padding: [18, 40, 4] }}>
-        <Column style={{ backgroundColor: p.carbon, padding: [16, 24, 18] }}>
+      <Section style={{ backgroundColor: p.paper, padding: [26, 40, 6] }}>
+        <Column style={{ backgroundColor: p.carbon, padding: [24, 30, 26] }}>
           <Grid columns={2} style={{ gap: 12, alignItems: "center" }}>
             <Text style={{ fontFamily: fonts.mono, fontSize: 12, fontWeight: 600, letterSpacing: 1.5, color: p.offWhite }}>
               BADGE AL·0118
             </Text>
             <Text style={{ ...metaText, color: p.lime, textAlign: "right" }}>Access granted ✓</Text>
           </Grid>
-          <Text style={{ fontFamily: fonts.body, fontSize: 12.5, lineHeight: 1.5, color: p.softDark, padding: [6, 0, 0] }}>
+          <Text style={{ fontFamily: fonts.body, fontSize: 12.5, lineHeight: 1.55, color: p.softDark, padding: [12, 0, 0] }}>
             Your badge is already printed. Collect it at reception on your first morning — it opens
             the studio, the fourth floor and the pantry.
           </Text>
@@ -209,8 +210,8 @@ export default function OfferEmail({ ctc }: { ctc?: number }) {
       </Section>
 
       {/* Buttons */}
-      <Section style={{ backgroundColor: p.paper, padding: [24, 40, 4] }}>
-        <Column style={{ gap: 14 }}>
+      <Section style={{ backgroundColor: p.paper, padding: [30, 40, 6] }}>
+        <Column style={{ gap: 17 }}>
           <Row style={{ gap: 12, justifyContent: "center" }}>
             <Button href={demoUrl}>Read the full offer</Button>
             <Button
@@ -231,8 +232,8 @@ export default function OfferEmail({ ctc }: { ctc?: number }) {
       </Section>
 
       {/* Sign-off + footer */}
-      <Section style={{ backgroundColor: p.paper, padding: [10, 40, 2] }}>
-        <Column style={{ gap: 2 }}>
+      <Section style={{ backgroundColor: p.paper, padding: [22, 40, 4] }}>
+        <Column style={{ gap: 5 }}>
           <Text style={{ fontFamily: fonts.body, fontSize: 13.5, color: p.ink }}>With excitement,</Text>
           <Text style={{ fontFamily: fonts.display, fontWeight: 700, fontSize: 15.5, color: p.ink }}>{hr.name}</Text>
           <Text style={{ fontFamily: fonts.body, fontSize: 12, color: p.soft }}>
@@ -241,8 +242,8 @@ export default function OfferEmail({ ctc }: { ctc?: number }) {
         </Column>
       </Section>
       <Strip color={p.carbon} height={2.5} />
-      <Section style={{ backgroundColor: p.paper, padding: [16, 40, 32] }}>
-        <Column style={{ gap: 7, alignItems: "center" }}>
+      <Section style={{ backgroundColor: p.paper, padding: [22, 40, 40] }}>
+        <Column style={{ gap: 10, alignItems: "center" }}>
           <Text style={{ fontFamily: fonts.mono, fontSize: 11, fontWeight: 600, color: p.ink, textAlign: "center" }}>
             {offer.ref} · {company.name} · {company.city}
           </Text>

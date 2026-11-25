@@ -46,7 +46,7 @@ export default function OfferLetter({
       fonts={faces ?? fontFaces}
       style={{ backgroundColor: p.paper, gap: 0 }}
     >
-      <PageHeader style={{ padding: [2, 0, 0] }}>
+      <PageHeader style={{ padding: [8, 0, 0] }}>
         <Row style={{ gap: 12, alignItems: "center" }}>
           <ArcMark w={40} h={30} main={p.carbon} inner={p.lime} />
           <Text style={{ fontFamily: "Inter, Arial, Helvetica, sans-serif", fontWeight: 700, fontSize: 11.5, letterSpacing: 2.4, color: p.ink, flex: 1 }}>
@@ -56,7 +56,7 @@ export default function OfferLetter({
             Offer · {offer.ref}
           </Text>
         </Row>
-        <Column style={{ padding: [9, 0, 0] }}>
+        <Column style={{ padding: [13, 0, 0] }}>
           <InkBand w={491} />
         </Column>
       </PageHeader>
@@ -72,9 +72,9 @@ export default function OfferLetter({
         </Row>
       </PageFooter>
 
-      <Column style={{ gap: 12 }}>
-        <Row style={{ gap: 18 }}>
-          <Column style={{ flex: 1, gap: 5 }}>
+      <Column style={{ gap: 18 }}>
+        <Row style={{ gap: 20 }}>
+          <Column style={{ flex: 1, gap: 9 }}>
             <Text style={kick(9.5, p.ink)}>
               Offer of employment — {dateLabel(offer.offerDate)}
             </Text>
@@ -90,7 +90,7 @@ export default function OfferLetter({
           <MiniBadge joiningLabel={`JOINS ${dateBadge(joining.joining).slice(4).toUpperCase()}`} />
         </Row>
 
-        <Text style={{ fontSize: 10.7, lineHeight: 1.58, color: p.ink }}>
+        <Text style={{ fontSize: 10.7, lineHeight: 1.66, color: p.ink }}>
           Dear {candidate.firstName} — after your conversations with {candidate.manager} and the{" "}
           {candidate.team} team, we are delighted to offer you this role. You will report to{" "}
           {candidate.manager} ({candidate.managerTitle.toLowerCase()}); the rhythm is hybrid, three
@@ -98,14 +98,14 @@ export default function OfferLetter({
           in it is computed from the salary structure — the assumptions are printed on page two.
         </Text>
 
-        <Row style={{ gap: 12 }}>
+        <Row style={{ gap: 16 }}>
           <DateChip label="Joining" value={dateBadge(joining.joining)} sub="Your first day" />
           <DateChip label="Probation ends" value={dateLabel(joining.probationEnd)} sub="Confirmation the next day" />
           <DateChip label="First salary" value={dateLabel(joining.firstSalaryDate)} sub={`Pro-rated · ${joining.firstMonthDaysWorked} of ${joining.firstMonthDaysTotal} days`} />
         </Row>
 
-        <Column style={{ backgroundColor: p.panel, border: { width: 1, style: "solid", color: p.hairline }, borderRadius: 16, padding: [16, 20, 12], gap: 2 }}>
-          <Row style={{ gap: 12, alignItems: "center", padding: [0, 0, 6] }}>
+        <Column style={{ backgroundColor: p.panel, border: { width: 1, style: "solid", color: p.hairline }, borderRadius: 16, padding: [22, 24, 18], gap: 4 }}>
+          <Row style={{ gap: 12, alignItems: "center", padding: [0, 0, 10] }}>
             <Text style={{ fontWeight: 700, fontSize: 16.5, color: p.ink, flex: 1 }}>The money, in full</Text>
             <Text style={kick(8.6, p.soft)}>
               Per year · new-regime tax
@@ -122,12 +122,12 @@ export default function OfferLetter({
             .map((r) => (
               <MoneyRow key={r.key} label={`Less: ${r.label.toLowerCase()}`} note={r.note} value={`− ${inr(-r.annual)}`} />
             ))}
-          <Column style={{ backgroundColor: p.carbon, borderRadius: 12, padding: [0, 0, 10], gap: 0 }}>
-            <Svg width={451} height={4} viewBox="0 0 451 4">
-              <Rect x={0} y={0} width={451} height={4} style={{ fill: p.lime }} />
+          <Column style={{ backgroundColor: p.carbon, borderRadius: 12, padding: [0, 0, 16], gap: 0 }}>
+            <Svg width={443} height={4} viewBox="0 0 443 4">
+              <Rect x={0} y={0} width={443} height={4} style={{ fill: p.lime }} />
             </Svg>
-            <Row style={{ gap: 12, alignItems: "center", padding: [10, 14, 0] }}>
-              <Column style={{ flex: 1, gap: 1 }}>
+            <Row style={{ gap: 12, alignItems: "center", padding: [15, 18, 0] }}>
+              <Column style={{ flex: 1, gap: 3 }}>
                 <Text style={{ fontWeight: 700, fontSize: 15.5, color: p.offWhite }}>
                   Take-home {inr(payroll.inHandMonthly)} <Span style={{ fontSize: 11, fontWeight: 600 }}>/ month</Span>
                 </Text>
@@ -142,12 +142,12 @@ export default function OfferLetter({
           </Column>
         </Column>
 
-        <Row style={{ gap: 18, alignItems: "center" }}>
-          <Text style={{ fontSize: 10.4, lineHeight: 1.55, color: p.ink, flex: 1 }}>
+        <Row style={{ gap: 20, alignItems: "center" }}>
+          <Text style={{ fontSize: 10.4, lineHeight: 1.6, color: p.ink, flex: 1 }}>
             To accept, sign and return one copy by <Span style={{ fontWeight: 700 }}>{dateLabel(offer.acceptBy)}</Span>.
             Your onboarding page — documents, first week, your buddy — opens the day you accept.
           </Text>
-          <Column style={{ gap: 1, alignItems: "end" }}>
+          <Column style={{ gap: 3, alignItems: "end" }}>
             <Text style={{ fontWeight: 700, fontSize: 14.5, color: p.ink }}>{hr.name}</Text>
             <Text style={{ fontSize: 9.2, fontWeight: 500, color: p.soft }}>
               {hr.title} · {hr.email}
@@ -158,7 +158,7 @@ export default function OfferLetter({
 
       <PageBreak />
 
-      <Column style={{ gap: 10 }}>
+      <Column style={{ gap: 14 }}>
         <Text style={kick(9.5, p.ink)}>
           Annexure A · The assumptions
         </Text>
@@ -168,7 +168,7 @@ export default function OfferLetter({
         {/* Numbered rows, not a List: the print renderer's List items
             overflow the right edge instead of wrapping (Phase-2 QA).
             Body width = content 491 − number 26 − gap 12. */}
-        <Column style={{ gap: 7 }}>
+        <Column style={{ gap: 13 }}>
           {[
             "Structure: basic 40% of CTC; HRA 50% of basic; employer PF (12% of basic) and the gratuity accrual (4.81% of basic) sit inside the CTC; special allowance is the balancing figure, so the components sum to the CTC exactly.",
             "Tax: new regime, FY 2026-27 — taxable salary is basic + HRA + special less the ₹75,000 standard deduction; slabs nil to 30%; Section 87A rebate up to ₹60,000 at or below ₹12,00,000 taxable (marginal relief just above); 4% cess; total rounded to the nearest ₹10. No HRA exemption or Chapter VI-A deductions.",
@@ -179,15 +179,15 @@ export default function OfferLetter({
               <Text style={{ fontFamily: fonts.mono, fontWeight: 600, fontSize: 10.2, color: p.ink, flex: "none", width: 26 }}>
                 {i + 1}.
               </Text>
-              <Text style={{ fontSize: 10.2, lineHeight: 1.55, color: p.ink, width: 452 }}>{text}</Text>
+              <Text style={{ fontSize: 10.2, lineHeight: 1.68, color: p.ink, width: 452 }}>{text}</Text>
             </Row>
           ))}
         </Column>
-        <Column style={{ backgroundColor: p.carbon, borderRadius: 12, padding: [0, 0, 12], gap: 0 }}>
+        <Column style={{ backgroundColor: p.carbon, borderRadius: 12, padding: [0, 0, 18], gap: 0 }}>
           <Svg width={491} height={4} viewBox="0 0 491 4">
             <Rect x={0} y={0} width={491} height={4} style={{ fill: p.lime }} />
           </Svg>
-          <Text style={{ fontSize: 9.6, fontWeight: 500, color: "rgba(242,243,239,0.85)", lineHeight: 1.55, padding: [10, 14, 0] }}>
+          <Text style={{ fontSize: 9.6, fontWeight: 500, color: "rgba(242,243,239,0.85)", lineHeight: 1.6, padding: [15, 18, 0] }}>
             One candidate file, figured end to end — the letter above, its annexure, the offer
             email, the onboarding page and the badge she will wear on day one are all drawn
             from it.
