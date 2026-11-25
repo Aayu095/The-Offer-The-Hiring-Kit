@@ -1,0 +1,33 @@
+{
+  "name": "hyper-elements-hiring",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsx src/render.tsx",
+    "check": "tsx src/check.tsx",
+    "samples": "tsx src/render-samples.tsx",
+    "check-samples": "tsx src/check-samples.tsx",
+    "test": "tsx src/test-engine.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@hyper-elements/email-clients": "^0.5.0",
+    "@hyper-elements/react": "^0.5.0",
+    "@react-pdf/renderer": "^4.9.0",
+    "@resvg/resvg-js": "^2.6.2",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "satori": "^0.33.5"
+  },
+  "devDependencies": {
+    "@types/node": "^24.19.2",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2"
+  },
+  "type": "module"
+}
